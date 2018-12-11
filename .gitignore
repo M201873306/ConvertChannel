@@ -1,0 +1,7 @@
+/.settings/
+/bin/
+/.idea/
+
+ConvertChannel.iml
+.project
+.classpath
