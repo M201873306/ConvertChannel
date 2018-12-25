@@ -69,12 +69,35 @@ public class InputOpt {
 	 * @return
 	 */
 	public static int inputEmployee(Connection con,int id) {
-		int code=0;
+		int code=1;
 		String sql="insert LOW.EMPLOYEE(\"id\",\"name\",\"date\",\"sex\",\"nativeplace\",\"eduback\") values(?,'zrq','2018-12-9','男','福建','硕士')";
 		PreparedStatement stmt=null;
 		try {
 			stmt=con.prepareStatement(sql);
 			stmt.setInt(1, id);
+			stmt.execute();
+			code=0;
+		} catch (SQLException e) {
+			//插入失败，编码为0
+			code=1;
+			return code;
+		}
+		return code;
+	}
+	
+	/**
+	 * 插入userA且修改当前轮数term
+	 * @param con
+	 * @param term
+	 * @return
+	 */
+	public static int inputEmployeeAandUpdateTerm(Connection con,int term) {
+		int code=0;
+		String sql="insert LOW.EMPLOYEE(\"id\",\"name\",\"date\",\"sex\",\"nativeplace\",\"eduback\",\"term\",\"tag\") values(666666,'zrq','2018-12-9','男','福建','硕士',?,0)";
+		PreparedStatement stmt=null;
+		try {
+			stmt=con.prepareStatement(sql);
+			stmt.setInt(1, term);
 			stmt.execute();
 			code=1;
 		} catch (SQLException e) {
@@ -83,5 +106,22 @@ public class InputOpt {
 			return code;
 		}
 		return code;
+	}
+	
+	/**
+	 * 插入SaralyA的数据并判断是否成功
+	 * @param con
+	 * @return
+	 */
+	public static boolean inputSalaryA(Connection con) {
+		boolean isok=false;
+		String sql="insert LOW.PAYROLL(\"id\",\"year\",\"month\",\"salary\") values(666666,2018,12,8000)";
+		try {
+			con.createStatement().execute(sql);
+			isok=true;
+		} catch (SQLException e) {
+			return false;
+		}
+		return isok;
 	}
 }

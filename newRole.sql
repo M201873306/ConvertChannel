@@ -1,7 +1,12 @@
 /*这个SQL只由SYSDBA实现，且为第一个SQL*/
 /*创建low两个用户，并创建数据库pay*/
 create user low identified by 123456789;
-
+CREATE TABLE "SYSDBA"."USER"
+(
+"id" INTEGER NOT NULL,
+"username" VARCHAR(50),
+"password" VARCHAR(50),
+CLUSTER PRIMARY KEY("id")) STORAGE(ON "MAIN", CLUSTERBTR) ;
 
 /*授予LOW该有的系统权限*/
 grant CREATE TABLE to "LOW";

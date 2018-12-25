@@ -1,7 +1,7 @@
 package opt;
 
-import user.Higher;
-import user.Lower;
+import user.MACHigher;
+import user.MACLower;
 /**
  * 隐通道操作主函数
  * @author zrq
@@ -45,11 +45,17 @@ public class ALLOpt {
 	 *  000000010101011111111100011010011011010100000100000000001101100
 	 * 0000000011101011111111100011010011011010100000100000000001101100
 	 *0000000001110101111111110001101001101101010000010000000000110110
-	 * 
+	 *0000000001110101111111110001101001101101010000010000000000110110
+	 *000000000111011100000000011110000000000001101011000000000010000000000000001100010000000
+	 *000000000111011100000000011110000000000001101011000
 	 */
 	public static void excute() {
-		Thread low=new Thread(new Lower());
-		Thread high=new Thread(new Higher());
+//		Thread low=new Thread(new Lower());
+//		Thread high=new Thread(new Higher());
+//		low.start();
+//		high.start();
+		Thread low=new Thread(new MACLower());
+		Thread high=new Thread(new MACHigher());
 		low.start();
 		high.start();
 	}

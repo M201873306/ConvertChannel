@@ -13,6 +13,8 @@ public class User {
 	private String sex;
 	private String level;
 	private Integer age;
+	private Integer term;
+	private Integer tag;
 	private String username;
 	private String password;
 	public User() {}
@@ -29,6 +31,18 @@ public class User {
 		return DMConnect.getConnection(DMConnect.JDBC_DRIVER, DMConnect.DB_URL, username, password);
 	}
 	
+	public Integer getTag() {
+		return tag;
+	}
+	public void setTag(Integer tag) {
+		this.tag = tag;
+	}
+	public Integer getTerm() {
+		return term;
+	}
+	public void setTerm(Integer term) {
+		this.term = term;
+	}
 	public Integer getId() {
 		return id;
 	}

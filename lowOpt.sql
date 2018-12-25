@@ -1,31 +1,25 @@
 /*这个SQL由LOW用户操作，第二个SQL*/
 /*新建员工表*/
-create table "LOW"."EMPLOYEE"
+CREATE TABLE "LOW"."EMPLOYEE"
 (
-	"id" INTEGER not null ,
-	"name" VARCHAR(50) not null ,
-	"date" DATE,
-	"sex" CHAR(10),
-	"nativeplace" VARCHAR(50),
-	"eduback" CHAR(10),
-	primary key("id")
-)
-storage(initial 1, next 1, minextents 1, fillfactor 0)
-;
-
-comment on table "LOW"."EMPLOYEE" is '员工表';
-
-comment on column "LOW"."EMPLOYEE"."id" is '员工编号';
-
-comment on column "LOW"."EMPLOYEE"."name" is '姓名';
-
-comment on column "LOW"."EMPLOYEE"."date" is '出生日期';
-
-comment on column "LOW"."EMPLOYEE"."sex" is '性别';
-
-comment on column "LOW"."EMPLOYEE"."nativeplace" is '籍贯';
-
-comment on column "LOW"."EMPLOYEE"."eduback" is '学历';
+"id" INTEGER NOT NULL,
+"name" VARCHAR(50) NOT NULL,
+"date" DATE,
+"sex" CHAR(10),
+"nativeplace" VARCHAR(50),
+"eduback" CHAR(10),
+"term" INTEGER,
+"tag" INTEGER DEFAULT 0,
+CLUSTER PRIMARY KEY("id")) STORAGE(ON "MAIN", CLUSTERBTR) ;
+COMMENT ON TABLE "LOW"."EMPLOYEE" IS '员工表';
+COMMENT ON COLUMN "LOW"."EMPLOYEE"."id" IS '员工编号';
+COMMENT ON COLUMN "LOW"."EMPLOYEE"."name" IS '姓名';
+COMMENT ON COLUMN "LOW"."EMPLOYEE"."date" IS '出生日期';
+COMMENT ON COLUMN "LOW"."EMPLOYEE"."sex" IS '性别';
+COMMENT ON COLUMN "LOW"."EMPLOYEE"."nativeplace" IS '籍贯';
+COMMENT ON COLUMN "LOW"."EMPLOYEE"."eduback" IS '学历';
+COMMENT ON COLUMN "LOW"."EMPLOYEE"."term" IS '轮数';
+COMMENT ON COLUMN "LOW"."EMPLOYEE"."tag" IS '标志';
 
 /*新建工资表*/
 create table "LOW"."PAYROLL"

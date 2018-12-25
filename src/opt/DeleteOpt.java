@@ -30,6 +30,7 @@ public class DeleteOpt {
 			tag=stmt.executeUpdate()>0?1:0;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			return 0;
 //			System.out.println("删除用户失败（外键（引用）存在！违反引用完整性！）");
 		}finally {
 			DMConnect.close(null,stmt,null);
@@ -58,5 +59,15 @@ public class DeleteOpt {
 			DMConnect.close(null,stmt,null);
 		}
 		return tag;
+	}
+	
+	/**
+	 * 删除SaralyA
+	 * @param con
+	 * @return
+	 */
+	public static boolean deleteSaralyA(Connection con) {
+		int tag=deleteSaraly(con,666666);
+		return tag==1?true:false;
 	}
 }
